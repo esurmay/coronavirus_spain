@@ -11,7 +11,7 @@ import PoliticasPrivacidad from './components/PoliticasPrivacidad';
 import ProcesamientoInfo from './components/ProcesamientoInfo';
 import CookiesPagina from './components/CookiesPagina';
 import Notes from './components/Notes';
-
+ 
 const Home = lazy(() => import('./components/Home'));
 
 class App extends Component {
