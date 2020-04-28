@@ -1,0 +1,178 @@
+.tituloTabla{
+    color: #1759FF;
+     vertical-align: bottom;
+}
+
+.fechaTabla{
+  color: #1759FF;
+   vertical-align: bottom;
+   font-size:25px;
+}
+
+
+
+.divTabla {
+  border: 1px solid;
+  border-radius: 10px !important;
+  box-shadow: 12px 1px 10px 5px gray;
+  /* background-color: white;
+    color: black;
+    width: 100%; */
+  }
+  .table-bordered {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+tr:hover {
+  background-color: #6BC4FF;
+  color: white;
+  border-bottom: 1px solid #ddd;
+
+ }
+
+ table {
+  /* border-collapse: collapse; */
+  border-radius: 1em;
+  overflow: hidden;
+  border: 1px solid black;
+  box-shadow: 5px 5px 10px 3px #6BC4FF;
+  width: 100%;
+}
+ th, td {
+  padding: 0.5em;
+  border-bottom: 1px solid #ddd;
+}
+.arrow{
+  font-size: 2em; color: gray;
+  cursor: pointer;
+}
+.arrow:active {
+  color: blue;
+}
+.arrowDisabled{
+  pointer-events: none;
+}
+
+#header{ width:100%}
+.header-left {
+    width:33%;
+    float:left;
+   
+}
+ 
+.header-right {
+    width:33%;
+    float:left;
+   
+}
+
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width:1024px) {
+  .fechaTabla{
+    color: #1759FF;
+     vertical-align: bottom;
+     /* font-size:20px; */
+  }
+
+    .header-left {
+      width:27%;
+      float:left;
+    
+  }
+}
+
+/* On screens that are 600px wide or less, the background color is olive */
+@media screen and (max-width: 768px) {
+  .fechaTabla{
+    color: #1759FF;
+     vertical-align: bottom;
+     font-size:20px;
+  }
+  .header-left {
+    width:22%;
+    float:left;
+    
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .fechaTabla{
+    color: #1759FF;
+     vertical-align: bottom;
+     font-size:25px;
+  }
+  .header-left {
+    width:31%;
+    float:left;
+    
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+  .fechaTabla{
+    color: #1759FF;
+     vertical-align: bottom;
+     font-size:25px;
+  }
+  .header-left {
+    width:25%;
+    float:left;
+    
+  }
+}
+
+
+.tdRowSpan{
+  vertical-align: middle; text-align:left;
+ }
+
+ .tdRowSpanNoData{
+  vertical-align: middle; text-align:center;
+ }
+
+ /* animation loading*/
+  
+.w80 {
+  width: 100%;
+}
+
+.wrapper {
+ width: 0px;
+ animation: fullView 0.5s forwards cubic-bezier(0.250, 0.460, 0.450, 0.940);
+}
+
+.comment {
+ height: 10px;
+ background: #777;
+ margin-top: 20px;
+}
+
+@keyframes fullView {
+ 100% {
+   width: 100%;
+ }
+}
+
+
+.animate {
+  animation : shimmer 2s infinite linear;
+  background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+   background-size: 1000px 100%;
+}
+
+@keyframes shimmer {
+ 0% {
+   background-position: -1000px 0;
+ }
+ 100% {
+   background-position: 1000px 0;
+ }
+}
+/* animation loading*/
+
+.divFooter{
+
+  font-size: 12px;
+}
