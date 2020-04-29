@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/coronavirus_spain/static/css/main.a33f5b53.chunk.css",
-    "main.js": "/coronavirus_spain/static/js/main.654d27b3.chunk.js",
-    "main.js.map": "/coronavirus_spain/static/js/main.654d27b3.chunk.js.map",
+    "main.js": "/coronavirus_spain/static/js/main.ebff0471.chunk.js",
+    "main.js.map": "/coronavirus_spain/static/js/main.ebff0471.chunk.js.map",
     "runtime-main.js": "/coronavirus_spain/static/js/runtime-main.1a9c543f.js",
     "runtime-main.js.map": "/coronavirus_spain/static/js/runtime-main.1a9c543f.js.map",
     "static/css/2.74189dbb.chunk.css": "/coronavirus_spain/static/css/2.74189dbb.chunk.css",
@@ -14,7 +14,7 @@
     "static/js/4.26a15dd8.chunk.js": "/coronavirus_spain/static/js/4.26a15dd8.chunk.js",
     "static/js/4.26a15dd8.chunk.js.map": "/coronavirus_spain/static/js/4.26a15dd8.chunk.js.map",
     "index.html": "/coronavirus_spain/index.html",
-    "precache-manifest.49c652eef29205c20841d7fab7c70ce4.js": "/coronavirus_spain/precache-manifest.49c652eef29205c20841d7fab7c70ce4.js",
+    "precache-manifest.1a3894e5701f40be8245619ca1d824a1.js": "/coronavirus_spain/precache-manifest.1a3894e5701f40be8245619ca1d824a1.js",
     "service-worker.js": "/coronavirus_spain/service-worker.js",
     "static/css/2.74189dbb.chunk.css.map": "/coronavirus_spain/static/css/2.74189dbb.chunk.css.map",
     "static/css/4.8031a2f0.chunk.css.map": "/coronavirus_spain/static/css/4.8031a2f0.chunk.css.map",
@@ -27,6 +27,6 @@
     "static/js/runtime-main.1a9c543f.js",
     "static/js/3.7427b9e4.chunk.js",
     "static/css/main.a33f5b53.chunk.css",
-    "static/js/main.654d27b3.chunk.js"
+    "static/js/main.ebff0471.chunk.js"
   ]
 }
