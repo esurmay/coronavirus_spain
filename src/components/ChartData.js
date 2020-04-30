@@ -23,10 +23,8 @@ export default class LineGraph extends Component {
         let funciones = new genericsFunctions();
         let retrieve = funciones.getDataforBars();
 
-
         retrieve.then(dataResult => {
 
-            console.log(dataResult);
             let chartObject = this.createChart(dataResult);
             this.setState({ data: chartObject, isLoading: false })
         })
@@ -35,10 +33,6 @@ export default class LineGraph extends Component {
     }
 
     createChart(datos) {
-
-        // this.setState({ isLoading: true })
-        // let result = await this.loadData();
-        // this.setState({ data: result, isLoading: false })
 
         var chartColors = {
             red: 'rgb(255, 99, 132)',

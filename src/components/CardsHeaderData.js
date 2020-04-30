@@ -21,57 +21,64 @@ class CardDataHeader extends Component {
         this.getData();
     }
 
-    getData() {
+    async getData() {
 
         this.setState({ isLoading: true })
 
         let funciones = new genericsFunctions();
-        let retrieve = funciones.getDataForHeaders();
+        //let retrieve = funciones.getDataForHeaders();
 
-        retrieve.then(datos => {
+        let datos = [];
+        let iteracion = 1;
 
-            console.log("CarsDataHeader");
-            console.log(datos);
+        let fechaActual = new Date();
 
-            let dataResult = [];
+        for (let i = 0; i < iteracion; i++) {
 
-            let casos = 0;
-            let casosPCR = 0;
-            let activos = 0;
-            let fallecidos = 0;
-            let recuperados = 0;
-            let Fecha = "";
+            fechaActual.setDate(fechaActual.getDate() - 1);
 
-            if (datos && datos.length > 0) {
+            datos = await funciones.getDataForHeaders(fechaActual);
 
-                let last = datos[datos.length - 1];
-
-                Fecha = last.Fecha;
-                casos = last.Casos;
-                casosPCR = last.CasosPCR;
-                activos = (last.CasosPCR + last.Casos) - last.Recuperados - last.Fallecidos;
-                fallecidos = last.Fallecidos;
-                recuperados = last.Recuperados;
+            if (datos === undefined) {
+                iteracion++;
+                i++;
             }
 
+        }
 
-            dataResult = [
+        let dataResult = [];
 
-                { Fecha: Fecha, total: (casos + casosPCR).toLocaleString(), Descripcion: "Total Casos" },
-                { Fecha: Fecha, total: fallecidos.toLocaleString(), Descripcion: "Fallecidos" },
-                { Fecha: Fecha, total: recuperados.toLocaleString(), Descripcion: "Recuperados" },
-                { Fecha: Fecha, total: activos.toLocaleString(), Descripcion: "Casos Activos" },
+        let casos = 0;
+        let casosPCR = 0;
+        let activos = 0;
+        let fallecidos = 0;
+        let recuperados = 0;
+        let Fecha = "";
 
-                // { Fecha: Fecha, total: casosPCR.toLocaleString(), Descripcion: "Total Casos PCR" },
-                // { Fecha: Fecha, total: fallecidos.toLocaleString(), Descripcion: "Fallecidos" },
-                // { Fecha: Fecha, total: recuperados.toLocaleString(), Descripcion: "Recuperados" },
-                // { Fecha: Fecha, total: casos.toLocaleString(), Descripcion: "Total Casos" },
-                // { Fecha: Fecha, total: activos.toLocaleString(), Descripcion: "Casos Activos" },
-            ]
+        if (datos && datos.length > 0) {
+
+            let last = datos[datos.length - 1];
+
+            Fecha = last.Fecha;
+            casos = last.Casos;
+            casosPCR = last.CasosPCR;
+            activos = (last.CasosPCR + last.Casos) - last.Recuperados - last.Fallecidos;
+            fallecidos = last.Fallecidos;
+            recuperados = last.Recuperados;
+        }
+
+        dataResult = [
+
+            { Fecha: Fecha, total: casosPCR.toLocaleString(), Descripcion: "Total Casos" },
+            { Fecha: Fecha, total: fallecidos.toLocaleString(), Descripcion: "Fallecidos" },
+            { Fecha: Fecha, total: recuperados.toLocaleString(), Descripcion: "Recuperados" },
+            { Fecha: Fecha, total: activos.toLocaleString(), Descripcion: "Casos Activos" },
+
+        ]
 
 
-            this.setState({ data: dataResult, isLoading: false })
-        })
+        this.setState({ data: dataResult, isLoading: false })
+
     }
 
 
@@ -105,8 +112,8 @@ class CardDataHeader extends Component {
                                     </div>
                                 </div>
                             </div>
-                    </Link>
-                        </div>
+                        </Link>
+                    </div>
                 )
             })
         }

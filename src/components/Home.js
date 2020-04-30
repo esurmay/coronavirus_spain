@@ -25,13 +25,9 @@ class Home extends Component {
     getData() {
 
         this.setState({ isLoading: true })
-
         let funciones = new genericsFunctions();
         let retrieve = funciones.getDataforBars();
-
         retrieve.then(dataResult => {
-
-            console.log(dataResult);
             this.setState({ data: dataResult, isLoading: false })
         });
     }

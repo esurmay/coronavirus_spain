@@ -6,10 +6,7 @@ import { regiones } from './region_master.json';
 
 class genericsFunctions extends Component {
 
-
-
     getUrlBase = () => { return 'https://covid19spain-ad3b.restdb.io/rest/coronavirusspain'; }
-
 
     formatDate(date) {
         var d = new Date(date),
@@ -36,19 +33,7 @@ class genericsFunctions extends Component {
 
     getAllData = (fecha) => {
 
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "data": '{"Fecha": "2020-02-29"}',
-            "method": "GET",
-            "headers": {
-                "content-type": "application/json",
-                "x-apikey": "5e84b5d6f96f9f072a0b0c23",
-                "cache-control": "no-cache"
-            }
-        }
-
-
+        var settings = this.getSettings();
         let _fecha = this.formatDateForQuery(fecha);
         let params = `?q={"FECHA":{"$eq":{"$date":"${_fecha}"}}}`;
         let url = this.getUrlBase() + params;
@@ -58,9 +43,9 @@ class genericsFunctions extends Component {
                 let lista = regiones;
 
                 let dataResponse = response.data;
-                debugger;
+
                 return dataResponse.map((item) => {
-                    let numeroCasos =  (item.CASOS !== "") ? item.CASOS : item["PCRplus"];
+                    let numeroCasos = (item.CASOS !== "") ? item.CASOS : item["PCRplus"];
 
 
                     let tabla = {
@@ -83,21 +68,9 @@ class genericsFunctions extends Component {
 
     }
 
-
-
     getAll = () => {
 
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "method": "GET",
-            "headers": {
-                "content-type": "application/json",
-                "x-apikey": "5e84b5d6f96f9f072a0b0c23",
-                "cache-control": "no-cache"
-            }
-        }
-
+        var settings = this.getSettings();
         let params = `?groupby=FECHA&aggregate=CASOS&aggregate=Fallecidos&aggregate=Recuperados`;
         let url = this.getUrlBase() + params;
 
@@ -117,31 +90,16 @@ class genericsFunctions extends Component {
 
                 });
 
-
-
             }, error => {
                 console.log(error);
 
             });
     }
 
-
     getDataforBars = () => {
 
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "method": "GET",
-            "headers": {
-                "content-type": "application/json",
-                "x-apikey": "5e84b5d6f96f9f072a0b0c23",
-                "cache-control": "no-cache"
-            }
-        }
-
+        var settings = this.getSettings();
         let params = `?groupby=FECHA&aggregate=CASOS&aggregate=PCRplus&aggregate=Fallecidos&aggregate=Recuperados`;
-        //let params = `?groupby=FECHA&aggregate=PCRplus&aggregate=Fallecidos&aggregate=Recuperados`;
-
         let url = this.getUrlBase() + params;
 
         return axios.get(url, settings)
@@ -169,67 +127,62 @@ class genericsFunctions extends Component {
             });
     }
 
-    getDataForHeaders = () => {
+    getDataForHeaders = async (fechaActual) => {
 
-        return this.getDataforBars();
+        let dataResult = [];
 
-        // const datos =  this.getDataforBars();
+        var settings = this.getSettings();
 
-        // let casos = 0;
-        // let activos = 0;
-        // let fallecidos = 0;
-        // let recuperados = 0;
-        // let Fecha = "";
+        let fecha = this.formatDateForQuery(fechaActual);
+        let paramDate = `?q={"FECHA":{"$eq":{"$date":"${fecha}"}}}`;
+        let paramGroups = `&groupby=FECHA&aggregate=CASOS&aggregate=PCRplus&aggregate=Fallecidos&aggregate=Recuperados`;
 
-        // if (datos && datos.length > 0) {
+        let url = this.getUrlBase() + paramDate + paramGroups;
 
-        //     let last = datos[datos.length - 1];
+        await axios.get(url, settings)
+            .then(response => {
 
-        //     Fecha = last.Fecha;
-        //     casos = last.Casos;
-        //     activos = last.Casos - last.Recuperados - last.Fallecidos;
-        //     fallecidos = last.Fallecidos;
-        //     recuperados = last.Recuperados;
-        // }
+                if (Object.keys(response.data).length === 0) {
+                    return null;
+                }
 
-        // return [
-        //     { Fecha: Fecha, total: this.numberWithCommas(casos), Descripcion: "Total Casos" },
-        //     { Fecha: Fecha, total: this.numberWithCommas(activos), Descripcion: "Casos Activos" },
-        //     { Fecha: Fecha, total: this.numberWithCommas(fallecidos), Descripcion: "Fallecidos" },
-        //     { Fecha: Fecha, total: this.numberWithCommas(recuperados), Descripcion: "Recuperados" }
-        // ]
+                let arrayDatos = Object.entries(response.data);
 
+                dataResult = arrayDatos.map((iArr, index) => {
 
+                    return {
+                        "Fecha": this.formatDate(new Date(iArr[0])),
+                        "CasosPCR": iArr[1]["SUM PCRplus"],
+                        "Casos": iArr[1]["SUM CASOS"],
+                        "Recuperados": iArr[1]["SUM Recuperados"],
+                        "Fallecidos": iArr[1]["SUM Fallecidos"],
+                    };
+
+                });
+
+            }, error => {
+                console.log(error);
+            });
+
+        return dataResult;
     }
 
     getDataByDate = async (fecha) => {
 
-
         let dataResult = [];
 
-
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "data": '{"fechas": "2020-02-29"}',
-            "method": "GET",
-            "headers": {
-                "content-type": "application/json",
-                "x-apikey": "5e84b5d6f96f9f072a0b0c23",
-                "cache-control": "no-cache"
-            }
-        }
+        var settings = this.getSettings();
 
         fecha = (fecha) ? this.formatDateForQuery(fecha) : this.formatDateForQuery(new Date());
         let params = `?q={"FECHA":{"$eq":{"$date":"${fecha}"}}}`;
         let url = this.getUrlBase() + params;
-    
+
         await axios.get(url, settings)
             .then(response => {
 
                 let lista = regiones;
                 dataResult = response.data.map((item) => {
-                    let numeroCasos =  (item.CASOS !== "") ? item.CASOS : item["PCRplus"];
+                    let numeroCasos = (item.CASOS !== "") ? item.CASOS : item["PCRplus"];
                     return {
                         "CCAA": item.CCAA,
                         "region": lista.find((it => it["CCAA"] === item["CCAA"]))["Descripcion"],
@@ -239,9 +192,6 @@ class genericsFunctions extends Component {
                         "Recuperados": item.Recuperados
                     }
                 });
-
-                console.log(dataResult);
-
 
 
             }, error => {
@@ -253,6 +203,21 @@ class genericsFunctions extends Component {
         return dataResult;
     }
 
+    getSettings = () => {
+
+        return {
+            "async": true,
+            "crossDomain": true,
+            "data": '{"fechas": "2020-02-29"}',
+            "method": "GET",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": "5e84b5d6f96f9f072a0b0c23",
+                "cache-control": "no-cache"
+            }
+        };
+
+    }
 
 
 }

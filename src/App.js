@@ -20,22 +20,8 @@ class App extends Component {
       <div className="App">
 
         <Router>
-
-          {/* <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/Cookies">Cookies</Link>
-              </li>
-              <li>
-                <Link to="/Politicas">Politicas de Privacidad</Link>
-              </li>
-            </ul>
-          </nav> */}
           <Navbar bg="primary" fixed="top" expand="lg" variant="dark">
-            <Navbar.Brand as={Link} to="/">Covid19 España</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/coronavirus_spain">Covid19 España</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
@@ -44,21 +30,14 @@ class App extends Component {
           </Navbar>
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/coronavirus_spain" component={Home} />
               <Route path="/Cookies" component={CookiesPagina} />
               <Route path="/Politicas" component={PoliticasPrivacidad} />
               <Route path="/ProcesamientoInfo" component={ProcesamientoInfo} />
               <Route path="/Notes" component={Notes} />
-
             </Switch>
-
           </Suspense>
         </Router>
-
-
-
-
-
 
       </div>
     );

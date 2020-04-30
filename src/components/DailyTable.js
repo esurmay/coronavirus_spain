@@ -23,15 +23,12 @@
 
         getData() {
 
-            this.setState({ isLoading: true })
-
-            let funciones = new genericsFunctions();
-            
+            this.setState({ isLoading: true });
+            let funciones = new genericsFunctions();            
             let retrieve = funciones.getAllData( new Date());
 
             retrieve.then(dataResult => {
             
-                console.log(dataResult);
                 this.totalCasos = (dataResult.length > 0) ? 
                 dataResult.reduce((acc, current) => { return Number(acc) + Number(current.numero_casos); },0):
                 0;
