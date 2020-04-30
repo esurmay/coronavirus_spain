@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4b87800b5fc1e7b0f14a5a6c605a8bb5",
+    "revision": "345857f95d78f590a40f71f6abe296ea",
     "url": "/coronavirus_spain/index.html"
   },
   {
@@ -8,12 +8,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coronavirus_spain/static/css/2.74189dbb.chunk.css"
   },
   {
-    "revision": "df5dd916ff094738e675",
+    "revision": "41e29d6e8028c0437a3d",
     "url": "/coronavirus_spain/static/css/4.8031a2f0.chunk.css"
   },
   {
-    "revision": "25ad0aa445d54f683f53",
-    "url": "/coronavirus_spain/static/css/main.a33f5b53.chunk.css"
+    "revision": "c130c24c7f934ca4ec71",
+    "url": "/coronavirus_spain/static/css/main.6c9c9922.chunk.css"
   },
   {
     "revision": "07bea811387412acd824",
@@ -32,16 +32,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coronavirus_spain/static/js/3.9e32d29f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "df5dd916ff094738e675",
-    "url": "/coronavirus_spain/static/js/4.a2116541.chunk.js"
+    "revision": "41e29d6e8028c0437a3d",
+    "url": "/coronavirus_spain/static/js/4.4b432fbb.chunk.js"
   },
   {
-    "revision": "25ad0aa445d54f683f53",
+    "revision": "c130c24c7f934ca4ec71",
     "url": "/coronavirus_spain/static/js/main.457950bc.chunk.js"
   },
   {
-    "revision": "4f7f85e40ded32dfe514",
-    "url": "/coronavirus_spain/static/js/runtime-main.866a7046.js"
+    "revision": "79044c208c5d415284d1",
+    "url": "/coronavirus_spain/static/js/runtime-main.c759b519.js"
   },
   {
     "revision": "5d5d9eefa31e5e13a6610d9fa7a283bb",
