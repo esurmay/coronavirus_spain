@@ -1,6 +1,6 @@
 
 .card{
-    margin: 20px;
+    margin: 5px;
     border-radius: 10px !important;
 }
 .card-horizontal {
@@ -13,9 +13,10 @@
 
 .card-bodyTotales{
     border-radius: 10px !important;
-    background-image: linear-gradient(to bottom right, orange, yellow);
+    /* background-image: linear-gradient(to bottom right, orange, yellow); */
+    background-image: linear-gradient(to bottom right, #023771, #5a97d4);
     font-size: medium;
-    color: black;
+    color: rgb(255, 253, 253);
 
     flex: 1 1 auto;
     min-height: 1px;

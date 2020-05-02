@@ -11,6 +11,8 @@ import PoliticasPrivacidad from './components/PoliticasPrivacidad';
 import ProcesamientoInfo from './components/ProcesamientoInfo';
 import CookiesPagina from './components/CookiesPagina';
 import Notes from './components/Notes';
+import Desescalada from './components/desescalada';
+import DailyTable from './components/DailyTable';
  
 const Home = lazy(() => import('./components/Home'));
 
@@ -20,7 +22,7 @@ class App extends Component {
       <div className="App">
 
         <Router>
-          <Navbar bg="primary" fixed="top" expand="lg" variant="dark">
+          <Navbar className="color-nav" fixed="top" expand="lg" variant="dark">
             <Navbar.Brand as={Link} to="/coronavirus_spain">Covid19 España</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -35,6 +37,8 @@ class App extends Component {
               <Route path="/Politicas" component={PoliticasPrivacidad} />
               <Route path="/ProcesamientoInfo" component={ProcesamientoInfo} />
               <Route path="/Notes" component={Notes} />
+              <Route path="/FasesDesescalada" component={Desescalada} />
+              <Route path="/Casos" component={DailyTable} />
             </Switch>
           </Suspense>
         </Router>

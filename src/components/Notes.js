@@ -10,68 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Notes extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { data: [] };
-    }
-
-
-    componentDidMount() {
-        this.getData();
-    }
-
-    getData() {
-
-        this.setState({ isLoading: true })
-
-        let funciones = new genericsFunctions();
-        let retrieve = funciones.getDataForHeaders();
-
-        retrieve.then(datos => {
-
-            console.log("CarsDataHeader");
-            console.log(datos);
-
-            let dataResult = [];
-
-            let casos = 0;
-            let casosPCR = 0;
-            let activos = 0;
-            let fallecidos = 0;
-            let recuperados = 0;
-            let Fecha = "";
-
-            if (datos && datos.length > 0) {
-
-                let last = datos[datos.length - 1];
-
-                Fecha = last.Fecha;
-                casos = last.Casos;
-                casosPCR = last.CasosPCR;
-                activos = (last.CasosPCR + last.Casos) - last.Recuperados - last.Fallecidos;
-                fallecidos = last.Fallecidos;
-                recuperados = last.Recuperados;
-            }
-
-
-            dataResult = [
-
-                { Fecha: Fecha, total: (casos + casosPCR).toLocaleString(), Descripcion: "Total Casos" },
-                { Fecha: Fecha, total: fallecidos.toLocaleString(), Descripcion: "Fallecidos" },
-                { Fecha: Fecha, total: recuperados.toLocaleString(), Descripcion: "Recuperados" },
-                { Fecha: Fecha, total: activos.toLocaleString(), Descripcion: "Casos Activos" },
-
-                // { Fecha: Fecha, total: casosPCR.toLocaleString(), Descripcion: "Total Casos PCR" },
-                // { Fecha: Fecha, total: fallecidos.toLocaleString(), Descripcion: "Fallecidos" },
-                // { Fecha: Fecha, total: recuperados.toLocaleString(), Descripcion: "Recuperados" },
-                // { Fecha: Fecha, total: casos.toLocaleString(), Descripcion: "Total Casos" },
-                // { Fecha: Fecha, total: activos.toLocaleString(), Descripcion: "Casos Activos" },
-            ]
-
-
-            this.setState({ data: dataResult, isLoading: false })
-        })
-    }
+ 
 
 
 

@@ -13,9 +13,8 @@ class CardDataHeader extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { data: [] };
+        this.state = { data: [], fechaUltima: "" };
     }
-
 
     componentDidMount() {
         this.getData();
@@ -26,23 +25,20 @@ class CardDataHeader extends Component {
         this.setState({ isLoading: true })
 
         let funciones = new genericsFunctions();
-        //let retrieve = funciones.getDataForHeaders();
-
         let datos = [];
         let iteracion = 1;
-
         let fechaActual = new Date();
 
-        for (let i = 0; i < iteracion; i++) {
+        for (let i = 0; i <= iteracion; i++) {
 
             fechaActual.setDate(fechaActual.getDate() - 1);
 
             datos = await funciones.getDataForHeaders(fechaActual);
 
-            if (datos === undefined) {
+            if (datos === undefined || datos.length === 0) {
                 iteracion++;
-                i++;
             }
+            i++;
 
         }
 
@@ -69,22 +65,21 @@ class CardDataHeader extends Component {
 
         dataResult = [
 
-            { Fecha: Fecha, total: casosPCR.toLocaleString(), Descripcion: "Total Casos" },
-            { Fecha: Fecha, total: fallecidos.toLocaleString(), Descripcion: "Fallecidos" },
-            { Fecha: Fecha, total: recuperados.toLocaleString(), Descripcion: "Recuperados" },
-            { Fecha: Fecha, total: activos.toLocaleString(), Descripcion: "Casos Activos" },
+            { route: "/FasesDesescalada", Fecha: Fecha, total: "Ver detalles...", Descripcion: "Fases de desescalada" },
+            { route: "/coronavirus_spain", Fecha: Fecha, total: casosPCR.toLocaleString(), Descripcion: "Total Casos" },
+            { route: "/coronavirus_spain", Fecha: Fecha, total: fallecidos.toLocaleString(), Descripcion: "Fallecidos" },
+            { route: "/coronavirus_spain", Fecha: Fecha, total: recuperados.toLocaleString(), Descripcion: "Recuperados" },
+
 
         ]
 
 
-        this.setState({ data: dataResult, isLoading: false })
+        this.setState({ data: dataResult, isLoading: false, fechaUltima: Fecha })
 
     }
 
 
     renderCardsHeaders() {
-
-
 
         if (this.state.data && this.state.data.length > 0) {
 
@@ -101,13 +96,13 @@ class CardDataHeader extends Component {
 
                 return (
                     <div key={index.toString()} className="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <Link to="/Notes">
+                        <Link to={x.route}>
                             <div className="card">
                                 <div className="card-horizontal">
-                                    <div className="card-body">
-                                        <h4 className="card-title">{x.Descripcion}</h4>
+                                    <div className="card-bodyTotales">
+                                        <h4 className="">{x.Descripcion}</h4>
                                         <p className="card-text text-right">
-                                            {x.total} | <span title={x.Fecha}><FontAwesomeIcon icon={faInfoCircle} style={divStyle} /> </span>
+                                            <strong>{x.total}</strong> | <span title={x.Fecha}><FontAwesomeIcon icon={faInfoCircle} style={divStyle} /> </span>
                                         </p>
                                     </div>
                                 </div>
@@ -131,17 +126,11 @@ class CardDataHeader extends Component {
                     return (
                         <div key={index.toString()} className="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                             <div className="card">
-                                <div className="card-horizontal">
-
-                                    <div className="card-body">
-                                        <h4 className="card-title">{x.Descripcion}</h4>
-                                        <div className="comment br animate w80"></div>
-                                        <div className="comment br animate w80"></div>
-                                    </div>
-                                </div>
-
+                                <div className="comentario br animatemore w100"></div>
                             </div>
                         </div>
+
+
                     )
                 })
             }
@@ -162,16 +151,27 @@ class CardDataHeader extends Component {
 
                         <br></br>
                         <br></br>
-                        <Link to="/Notes"><strong>Nota importante de pagina oficial</strong></Link>
+                        <h6>Ultima Actualización: {this.state.fechaUltima}</h6>
+                        {/* <Link to="/Notes"><strong>Nota importante de pagina oficial</strong></Link> */}
 
 
                     </div>
                 </div>
                 <div className="row">
+
+
                     {this.renderCardsHeaders()}
-                    <br></br>
-                    <hr className="new1"></hr>
-                    <br></br>
+                    <div className="col-xs-12 col-12">                      
+                        <Link to="/Notes"><strong>Nota importante de pagina oficial</strong></Link>      
+                        <br></br>
+                        <br></br>
+                    </div>
+                    <div className="col-xs-12 col-12 divFooter d-none d-md-block d-lg-block">
+                        <br></br>
+                        <hr className="new1"></hr>
+                        <br></br>
+                    </div>
+                   
                 </div>
             </div>
         )

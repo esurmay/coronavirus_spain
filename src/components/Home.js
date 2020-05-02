@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import DailyTable from './DailyTable';
 import CardDataHeader from './CardsHeaderData';
 import LineGraph from './ChartData';
+import Desescalada from "./desescalada";
 
 
 
@@ -87,7 +88,7 @@ class Home extends Component {
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                        <div className="d-none d-md-block d-lg-block col-md-4 col-lg-4 col-xl-4">
                             <h2 align="center" className="tituloTabla">Situacion</h2>
                             <DailyTable></DailyTable>
                         </div>
@@ -102,10 +103,13 @@ class Home extends Component {
                     <div className="row">
                         <div className="col-xs-12 col-12 divFooter">
 
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
+                        <div className="d-none d-md-block d-lg-block">
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                            </div>
+
                             <strong>Importante:</strong> Toda la informacion mostrada en esta pagina web son de las fuentes oficiales de:
                             <a rel="noopener noreferrer" target="_blank" href="https://covid19.isciii.es/">https://covid19.isciii.es/</a>
                             <br></br>
@@ -114,24 +118,15 @@ class Home extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-xs-12 col-12 divFooter">
-
-
+                        <div className="col-xs-12 col-12 divFooter d-none d-md-block d-lg-block">
                             <br></br>
                             <Link to="/Politicas">Politicas de Privacidad</Link>
-
                             <p className="text-center">
                                 <small className="text-center">All rights reserved</small>
-
                             </p>
-
-
                         </div>
                     </div>
-
-
                 </div>
-
                 {/* {this.state.showComponent && <AvisoCookies hideOverlay={this.hide_overlay} />}
        */}
             </div>
