@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bbe077ed2840dae71aa23ae988769869",
+    "revision": "9765d7860b33f2a952dd77d2a4932d74",
     "url": "/coronavirus_spain/index.html"
   },
   {
-    "revision": "7d1d1e3bc3aa4b83b41c",
+    "revision": "d0da3e796437d550bdc0",
     "url": "/coronavirus_spain/static/css/2.74189dbb.chunk.css"
   },
   {
-    "revision": "286117d9fb61e00264a4",
+    "revision": "ccb066133e708a9989e3",
     "url": "/coronavirus_spain/static/css/4.50be806c.chunk.css"
   },
   {
@@ -16,32 +16,32 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coronavirus_spain/static/css/main.35756c4e.chunk.css"
   },
   {
-    "revision": "7d1d1e3bc3aa4b83b41c",
-    "url": "/coronavirus_spain/static/js/2.29c1bea1.chunk.js"
+    "revision": "d0da3e796437d550bdc0",
+    "url": "/coronavirus_spain/static/js/2.977391cd.chunk.js"
   },
   {
     "revision": "e7cad5e8c80a4a756b57f883a8b131b2",
-    "url": "/coronavirus_spain/static/js/2.29c1bea1.chunk.js.LICENSE.txt"
+    "url": "/coronavirus_spain/static/js/2.977391cd.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "941a418f4fe07f8072cc",
-    "url": "/coronavirus_spain/static/js/3.998178b3.chunk.js"
+    "revision": "25590ec76a9e19f50e0d",
+    "url": "/coronavirus_spain/static/js/3.510ea675.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/coronavirus_spain/static/js/3.998178b3.chunk.js.LICENSE.txt"
+    "url": "/coronavirus_spain/static/js/3.510ea675.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "286117d9fb61e00264a4",
-    "url": "/coronavirus_spain/static/js/4.9a6a179b.chunk.js"
+    "revision": "ccb066133e708a9989e3",
+    "url": "/coronavirus_spain/static/js/4.5c98c470.chunk.js"
   },
   {
     "revision": "c27694b3d8e2de511a5d",
     "url": "/coronavirus_spain/static/js/main.031f7a84.chunk.js"
   },
   {
-    "revision": "1fd7bc495456afb44f87",
-    "url": "/coronavirus_spain/static/js/runtime-main.72e6fe4d.js"
+    "revision": "a0b44bf508663f5d4403",
+    "url": "/coronavirus_spain/static/js/runtime-main.07d88735.js"
   },
   {
     "revision": "5d5d9eefa31e5e13a6610d9fa7a283bb",
