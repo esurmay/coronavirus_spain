@@ -116,12 +116,6 @@ class DailyTable extends Component {
         return (
             <div>
 
-                <div className="jumbotron text-center d-block d-md-none d-lg-none">
-                    <br></br>
-                    <br></br>
-                    <h1>Casos</h1>
-                    <p className="text-justify"></p>
-                </div>
 
                 <div>
                     <div className="container" id="header">

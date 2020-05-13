@@ -12,7 +12,7 @@ import ProcesamientoInfo from './components/ProcesamientoInfo';
 import CookiesPagina from './components/CookiesPagina';
 import Notes from './components/Notes';
 import Desescalada from './components/desescalada';
-import DailyTable from './components/DailyTable';
+import CasosDiarios from './components/CasosDiarios';
  
 const Home = lazy(() => import('./components/Home'));
 
@@ -38,7 +38,7 @@ class App extends Component {
               <Route path="/ProcesamientoInfo" component={ProcesamientoInfo} />
               <Route path="/Notes" component={Notes} />
               <Route path="/FasesDesescalada" component={Desescalada} />
-              <Route path="/Casos" component={DailyTable} />
+              <Route path="/Casos" component={CasosDiarios} />
             </Switch>
           </Suspense>
         </Router>

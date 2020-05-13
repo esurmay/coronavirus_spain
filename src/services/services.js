@@ -135,8 +135,9 @@ class genericsFunctions extends Component {
 
         let fecha = this.formatDateForQuery(fechaActual);
         let paramDate = `?q={"FECHA":{"$eq":{"$date":"${fecha}"}}}`;
-        let paramGroups = `&groupby=FECHA&aggregate=CASOS&aggregate=PCRplus&aggregate=Fallecidos&aggregate=Recuperados`;
-
+        let paramGroups = `&groupby=FECHA&aggregate=CASOS&aggregate=PCRplus&aggregate=Fallecidos&aggregate=Recuperados&aggregate=UCI&aggregate=Hospitalizados`;
+        //let paramGroups = `&groupby=FECHA&aggregate=CASOS&aggregate=PCRplus&aggregate=Fallecidos&aggregate=Recuperados`;
+        
         let url = this.getUrlBase() + paramDate + paramGroups;
 
         await axios.get(url, settings)
@@ -156,6 +157,8 @@ class genericsFunctions extends Component {
                         "Casos": iArr[1]["SUM CASOS"],
                         "Recuperados": iArr[1]["SUM Recuperados"],
                         "Fallecidos": iArr[1]["SUM Fallecidos"],
+                        "UCI": iArr[1]["SUM UCI"],
+                        "Hospitalizados": iArr[1]["SUM Hospitalizados"],
                     };
 
                 });

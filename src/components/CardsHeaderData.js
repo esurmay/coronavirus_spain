@@ -49,6 +49,8 @@ class CardDataHeader extends Component {
         let activos = 0;
         let fallecidos = 0;
         let recuperados = 0;
+        let Hospitalizados = 0;
+        let UCI = 0;
         let Fecha = "";
 
         if (datos && datos.length > 0) {
@@ -61,14 +63,19 @@ class CardDataHeader extends Component {
             activos = (last.CasosPCR + last.Casos) - last.Recuperados - last.Fallecidos;
             fallecidos = last.Fallecidos;
             recuperados = last.Recuperados;
+            Hospitalizados = last.Hospitalizados;
+            UCI = last.UCI;
         }
 
         dataResult = [
 
             { route: "/FasesDesescalada", Fecha: Fecha, total: "Ver detalles...", Descripcion: "Fases de desescalada" },
+            { route: "/Casos", Fecha: Fecha, total: "Ver detalles...", Descripcion: "Casos por dia" },
             { route: "/coronavirus_spain", Fecha: Fecha, total: casosPCR.toLocaleString(), Descripcion: "Total Casos" },
-            { route: "/coronavirus_spain", Fecha: Fecha, total: fallecidos.toLocaleString(), Descripcion: "Fallecidos" },
             { route: "/coronavirus_spain", Fecha: Fecha, total: recuperados.toLocaleString(), Descripcion: "Recuperados" },
+            { route: "/coronavirus_spain", Fecha: Fecha, total: Hospitalizados.toLocaleString(), Descripcion: "Hospitalizados" },
+            { route: "/coronavirus_spain", Fecha: Fecha, total: UCI.toLocaleString(), Descripcion: "UCI" },
+            { route: "/coronavirus_spain", Fecha: Fecha, total: fallecidos.toLocaleString(), Descripcion: "Fallecidos" },
 
 
         ]
@@ -101,9 +108,10 @@ class CardDataHeader extends Component {
                                 <div className="card-horizontal">
                                     <div className="card-bodyTotales">
                                         <h4 className="">{x.Descripcion}</h4>
-                                        <p className="card-text text-right">
-                                            <strong>{x.total}</strong> | <span title={x.Fecha}><FontAwesomeIcon icon={faInfoCircle} style={divStyle} /> </span>
-                                        </p>
+                                        <h5 className="card-text text-center">
+                                            <strong>{x.total}</strong> 
+                                            {/* | <span title={x.Fecha}><FontAwesomeIcon icon={faInfoCircle} style={divStyle} /> </span> */}
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
